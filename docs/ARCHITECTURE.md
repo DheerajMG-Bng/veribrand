@@ -54,3 +54,5 @@ Code existence and literal quote grounding do not establish semantic entailment.
 - No auth, vector database, background queue or separate frontend deployment was added for the MVP. These choices reduced deployment dependencies while keeping human workflow, citations, versions and audit visible.
 
 Verified behavior and its scope are recorded in [BUILD_VERIFICATION.md](BUILD_VERIFICATION.md). Production limitations are listed in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](submission/evidence/qwen-live-check.json).

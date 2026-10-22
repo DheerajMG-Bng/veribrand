@@ -1,0 +1,28 @@
+{
+  "date": "22 October 2026",
+  "context": "Informal sessions with three volunteers, run and observed by the team on the live site after deployment.",
+  "charan": "<< Charan reviewed the review-engine code with Dheeraj, ran the test suite, and took part in the live testing, Backend, coding implementation ideas >>",
+  "sessions": [
+    {
+      "tester": "Tester 1",
+      "time": "about 4 minutes",
+      "notes": "Learned the product from the guided demo, completed the journey, relied on the AI-suggested findings and checked them against the knowledge base, and acted as the Manager role."
+    },
+    {
+      "tester": "Tester 2",
+      "time": "about 6 minutes",
+      "notes": "Used a sample draft and switched roles freely. Said a separate Reviewer role felt unnecessary and preferred approving directly as Manager.",
+      "observer_note": "This is one tester's reaction to the Reviewer step."
+    },
+    {
+      "tester": "Tester 3",
+      "time": "about 5 minutes",
+      "notes": "Used a sample draft, followed the AI suggestions and checked them against the knowledge base."
+    }
+  ],
+  "common": "All three relied on the AI-suggested findings and verified them using the visible source line",
+  "source_line": "Source: organisation-approved knowledge base · Fictional Acme Hydrate",
+  "limits": "Three volunteers, informal, observed by the team, no timing of individual tasks, no formal questionnaire. Not statistically meaningful. The test sessions left content items in the live demo workspace.",
+  "limit_statement": "Usability evidence is limited to three informal volunteer sessions; no formal study or independent accuracy evaluation has been done.",
+  "round1": "Our Round 1 plan (Team 27) specified the Gemini API; Supabase/PostgreSQL with pgvector retrieval; a React frontend deployed separately; real user roles; image and DOCX/PDF review in scope; and Guideline-Clarity Insights, multi-format review and an evaluation harness as improvements."
+}

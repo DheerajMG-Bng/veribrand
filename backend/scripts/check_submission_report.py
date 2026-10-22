@@ -5,6 +5,7 @@ Visual inspection of every page is still required after this script succeeds.
 from pathlib import Path
 import json
 import re
+import sys
 import pypdfium2 as pdfium
 from pypdf import PdfReader
 from docx import Document
@@ -12,7 +13,7 @@ from docx import Document
 ROOT=Path(__file__).resolve().parents[2]
 QA=ROOT/'.verification/submission-qa'
 QA.mkdir(parents=True,exist_ok=True)
-pdfpath=ROOT/'docs/submission/VeriBrand_Round2_Update.pdf'
+pdfpath=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else ROOT/'docs/submission/VeriBrand_Round2_Update.pdf'
 pdf=pdfium.PdfDocument(str(pdfpath))
 for i in range(len(pdf)):
     page=pdf[i]
@@ -33,7 +34,15 @@ assert not missing,'DOCX text missing from PDF: '+repr(missing[:4])
 assert not re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}',text),'Email detected'
 assert not re.search(r'(?<!\d)(?:\+91[ -]?)?[6-9]\d{9}(?!\d)',text),'Possible phone number detected'
 placeholders=sorted(set(re.findall(r'\[\[HUMAN:.*?\]\]',text)))
-assert set(placeholders)=={'[[HUMAN: Charan to describe only what he actually did]]','[[HUMAN: add results]]'}
+assert not placeholders,'Human placeholders remain in the final PDF.'
+assert '[['+'HUMAN' not in '\n'.join(paragraphs),'Human placeholders remain in the DOCX.'
+facts=json.loads((ROOT/'docs/submission/human-facts.json').read_text(encoding='utf-8'))
+assert norm(facts['charan']) in norm(text),'The exact supplied Charan text is missing.'
+assert norm(facts['source_line']) in norm(text),'The supplied visible source line is missing.'
+for session in facts['sessions']:
+    assert norm(session['notes']) in norm(text)
+    assert session['time'] in text
+assert norm(facts['limit_statement']) in norm(text)
 assert 'https://veribrand.onrender.com' in text
 assert 'https://github.com/DheerajMG-Bng/veribrand' in text
 links=[annotation.get_object().get('/A',{}).get('/URI') for annotation in reader.pages[0].get('/Annots',[])]

@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-22T11:17:42.859730+00:00",
+  "model": "qwen/qwen3.8-27b",
+  "request_count": 1,
+  "response_format": {
+    "type": "json_object"
+  },
+  "max_completion_tokens": 32,
+  "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+  "http_status": 403,
+  "success": false,
+  "error_code": "model_permission_blocked_org",
+  "error_type": "permissions_error",
+  "error_message": "The model `qwen/qwen3.8-27b` is blocked at the organization level. Please have the org admin enable this model in the org settings at https://console.groq.com/settings/limits"
+}

@@ -1,31 +1,39 @@
-# Human user testing session sheet
+# Informal user testing
 
-Results are intentionally empty. The live checks in submission/evidence were performed by automation and do not count as human sessions. Duplicate this sheet for each real participant; use initials only, without phone numbers or email addresses.
+Date: 22 October 2026.
 
-Tester initials: __________
+Informal, n=3. Informal sessions with three volunteers, run and observed by the team on the live site after deployment.
 
-Tester role or background: __________
+These are human-supplied observer notes. No initials, participant quotes, additional role labels or per-task timings were supplied.
 
-Date: __________
+## Tester 1
 
-Facilitator initials: __________
+Approximate total session time: about 4 minutes.
 
-Use https://veribrand.onrender.com. Record time from task start until success or abandonment. Observe before helping, and record any help given.
+Learned the product from the guided demo, completed the journey, relied on the AI-suggested findings and checked them against the knowledge base, and acted as the Manager role.
 
-| Task | Success or abandoned | Time for this task | Where they hesitated | Bugs or help needed |
-| --- | --- | --- | --- | --- |
-| 1. Start the guided demo and run a rules-only review. Open one cited knowledge item. | | | | |
-| 2. Accept one suggestion, edit another and reject with a reason. Apply decisions and identify the new version. | | | | |
-| 3. Re-review, decide remaining high findings and submit. Switch to Manager; approve and complete Reviewer sign-off if routed. | | | | |
-| 4. Return with a comment, create a revision, compare versions and locate the comment and audit entry. | | | | |
-| 5. Load sample 11 with AI on. Explain AI-suggested versus Rule-based and Unverified, needs a human. Explore the KB and role/status controls. | | | | |
+## Tester 2
 
-One exact participant quote: __________
+Approximate total session time: about 6 minutes.
 
-Most confusing step: __________
+Used a sample draft and switched roles freely. Said a separate Reviewer role felt unnecessary and preferred approving directly as Manager.
 
-Observed bugs and reproduction steps: __________
+Observer note: This is one tester's reaction to the Reviewer step.
 
-Follow-up action and owner: __________
+## Tester 3
 
-Human session summary awaiting completion: [[HUMAN: add results]]
+Approximate total session time: about 5 minutes.
+
+Used a sample draft, followed the AI suggestions and checked them against the knowledge base.
+
+## Common observation
+
+All three relied on the AI-suggested findings and verified them using the visible source line:
+
+Source: organisation-approved knowledge base · Fictional Acme Hydrate
+
+## Limits
+
+Three volunteers, informal, observed by the team, no timing of individual tasks, no formal questionnaire. Not statistically meaningful. The test sessions left content items in the live demo workspace.
+
+Usability evidence is limited to three informal volunteer sessions; no formal study or independent accuracy evaluation has been done.

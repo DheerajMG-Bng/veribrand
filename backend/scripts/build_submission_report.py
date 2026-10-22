@@ -22,6 +22,8 @@ QA.mkdir(parents=True,exist_ok=True)
 plans=json.loads((OUT/'round3-designs.json').read_text(encoding='utf-8'))
 ai=json.loads((OUT/'evidence/live-ai.json').read_text(encoding='utf-8'))
 events=json.loads((OUT/'evidence/live-feature-verification.json').read_text(encoding='utf-8'))
+facts=json.loads((OUT/'human-facts.json').read_text(encoding='utf-8'))
+qwen=json.loads((OUT/'evidence/qwen-live-check.json').read_text(encoding='utf-8'))
 
 def architecture():
     image=Image.new('RGB',(1700,790),'white')
@@ -144,19 +146,19 @@ h('Summary',2)
 p('VeriBrand is a working text-first brand-governance demo. Creators review content against approved fictional Acme Hydrate knowledge, inspect cited findings and make explicit decisions. New versions pass to a Manager, with Reviewer sign-off for retained medical risks. The live core workflow and an uncached Groq request passed the submission checks.')
 link('Live demo','https://veribrand.onrender.com')
 link('Repository','https://github.com/DheerajMG-Bng/veribrand')
-p('Roles are simulated, not authentication. This shared hackathon deployment is not a production service. Human testing results and Charan\'s contribution remain awaiting input.')
+p('Roles are simulated, not authentication. This shared hackathon deployment is not a production service. The team observed three informal volunteer sessions after deployment; their notes and the supplied team contributions are included.')
 h('Round 1 plan and delivered implementation',2)
-p('The plan baseline below is the team-supplied build brief; the original Round 1 document was not independently inspected.')
-table(['Plan baseline','Delivered in Round 2','Why it changed'],[
- ['Gemini','Groq via HTTPX with configured fallback','Use the supplied provider; degrade safely'],
- ['Supabase or PostgreSQL','SQLAlchemy 2 and SQLite','Reduce external setup for the demo'],
+p('This comparison describes our Round 1 plan (Team 27) and the Round 2 delivery.')
+table(['Our Round 1 plan','Delivered in Round 2','Why it changed'],[
+ ['Gemini API','Groq via HTTPX with configured fallback','Use the existing provider; degrade safely'],
+ ['Supabase/PostgreSQL','SQLAlchemy 2 and SQLite','Reduce external setup for the demo'],
  ['pgvector retrieval','Complete compact 19-item KB prompt','Small supplied knowledge set'],
  ['Separate React hosting','React build served by FastAPI','One Python deployment and one origin'],
  ['Real user roles','Header-selected demo roles','Finish approval semantics before identity'],
- ['Image and document review','Text review only','Preserve the complete core workflow'],
- ['Rule implementation choice','Metadata rules, grounding and revalidation','Expose sources and reject unsafe wording'],
- ['Demo reliability choice','KB-matched precomputed sample cache','Reduce judging latency and provider use']
+ ['Image and DOCX/PDF review in scope','Text review only; formats in Round 3','Preserve the complete core workflow'],
+ ['Three planned improvements','Clarity insights, multi-format and evaluation harness retained for Round 3','Keep the planned direction with concrete designs']
 ],[1.5,2.65,2.65])
+p('Additional Round 2 decisions include metadata-driven rules, grounding and replacement revalidation, plus a KB-matched precomputed sample cache to reduce latency and provider use.')
 
 page('Completed features')
 p('The following were exercised on the public service by HTTP requests or browser use on 22 October 2026. Automated checks are not human usability sessions.')
@@ -192,7 +194,7 @@ table(['Layer','Implementation'],[
 ],[1.25,5.55])
 h('API and workflow',2)
 p('The /api routes provide knowledge and samples; content creation and reads; review; finding decisions; fix application and versions/diff; submit, approve, return and reviewer-signoff; comments/audit; AI status; and Admin knowledge/reset actions. X-Role selects the simulated role. State-changing operations write audit entries. Approval is an internal state and does not publish externally.')
-p('The primary model was verified live during this submission check. The fallback appeared in the original saved run. The configured third model has not been verified live; mocked tests establish fallback control flow, not provider availability.')
+p('The primary model was verified live during the submission check; the fallback appeared in the original saved run. The configured third model remains not verified live: one minimal JSON-mode call on 22 October 2026 returned HTTP 403, model_permission_blocked_org, because the organization blocks it. No retry or app-code change was made.')
 
 page('Technical decisions and difficult parts')
 h('Grounding and human control',2)
@@ -227,12 +229,12 @@ h('Known limits',2)
 for text in [
  'Roles are simulated and data is shared; there is no real authentication or tenant isolation.',
  'Render Free can cold-start and lose SQLite state, audit history and local counters on restart/redeploy/spin-down. Provider quotas still apply.',
- 'The third configured model is not verified live. Token estimates are not a preflight guarantee; other uses of the same key are invisible locally.',
+ 'The third model is not verified live: one JSON-mode call returned HTTP 403, model_permission_blocked_org, on 22 October 2026. Other uses of the same key are invisible to local counters.',
  'Confidence is uncalibrated; quote/code validation cannot establish every AI explanation is correct. High-risk overrides can remain with reasons; medical risks need Reviewer sign-off.',
  'Images, DOCX/PDF ingestion, clarity analytics and benchmark metrics in the UI are not implemented.',
  'KB changes do not automatically re-review existing versions or snapshot historical policy text. Diff is plain before/after.',
  'Initial status can briefly say Rules available before loading; rules-only progress copy still mentions AI. The test suite emits a dependency deprecation warning.',
- 'No human usability results were supplied. Automated public checks found no blocking core failure; this is not a production or load audit.'
+ facts['limit_statement']
 ]:bullet(text)
 
 page('Team contributions and disclosure')
@@ -240,15 +242,27 @@ h('Team confirmed contributions',2)
 p('Dheeraj created the GitHub repository, the Groq key and the Render deployment; wrote the Round 1 plan; directed the AI-assisted build with the prompts; and handled documentation and submission.')
 p('The code was generated by Codex (GPT-6.1 Sol) under Dheeraj\'s direction. Codex assisted with tests, verification tooling and submission artifacts. Commit author names are not used to infer who completed a task.')
 h('Charan',2)
-p('[[HUMAN: Charan to describe only what he actually did]]')
-h('User testing',2)
-p('[[HUMAN: add results]]')
-p('No testers, completion times or participant quotes are claimed. docs/USER_TESTING.md is a ready-to-use sheet with tester initials, role, date, five tasks, time per task, hesitation, bugs and one quote; results are empty. Automated verification is recorded separately.')
+p(facts['charan'])
 h('AI and reuse disclosure',2)
 p('Product AI sends draft text, channel, compact approved knowledge and rule summaries to Groq only when enabled on a suitable cache miss. The UI discloses this transfer and asks users to avoid confidential content. The key stays server-side and .env is ignored and untracked. The application uses fictional team-supplied brand data, open-source libraries and Lucide icons; no external website template or additional training dataset was used.')
 p('The verified public request returned an AI-origin unsupported claim and increased primary-model daily usage from 0 to 917 tokens. The live UI showed AI-suggested, Unverified, needs a human and disabled Accept. No accounting/label fix was required. An earlier zero alone was inconclusive because cache hits do not add usage and ephemeral counters may reset.')
 h('Evidence and source boundaries',2)
-p('Implementation and test evidence are in this repository. Round 1 comparisons use the team-supplied plan description; contribution statements use the team\'s explicit confirmation. Round 3 pages describe proposed designs and future acceptance measures, not completed features. Full records: docs/submission/VERIFICATION.md, docs/AI_DISCLOSURE.md and docs/KNOWN_ISSUES.md.')
+p('Implementation and automated test evidence are in this repository. The comparison names our Round 1 plan (Team 27). Contributions and informal session notes are the team\'s supplied facts. Round 3 pages describe proposed designs and future acceptance measures, not completed features. Full records: docs/submission/VERIFICATION.md, docs/AI_DISCLOSURE.md and docs/KNOWN_ISSUES.md.')
+
+page('Informal user testing')
+p('Informal, n=3. Run and observed by the team on the live site on 22 October 2026, after deployment. The following are the supplied observer notes.')
+for session in facts['sessions']:
+    h(session['tester'],2)
+    p('Approximate total session time: '+session['time']+'.')
+    p(session['notes'])
+    if session.get('observer_note'):
+        p('Observer note: '+session['observer_note'])
+h('Common observation',2)
+p(facts['common']+':')
+p(facts['source_line'])
+h('Limits',2)
+p(facts['limits'])
+p(facts['limit_statement'])
 
 for i,plan in enumerate(plans,1):
     page('Round 3 improvement '+str(i))

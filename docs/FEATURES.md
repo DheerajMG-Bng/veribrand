@@ -43,3 +43,5 @@ The live review limiter returns a friendly 429 with Retry-After when the minute 
 Frontend deep links and the full approval lifecycle pass public HTTP smoke; Python serves the committed React bundle.
 
 Local re-verification: 44 tests pass; rules-only and cached-AI sample reruns each find 17/17 expected code occurrences on the project's own 11 drafts, with zero findings on clean sample 2. This is not general accuracy.
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](submission/evidence/qwen-live-check.json).

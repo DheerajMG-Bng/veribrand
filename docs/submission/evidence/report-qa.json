@@ -1,21 +1,17 @@
 {
-  "pages": 9,
-  "paragraphs_and_cells_checked": 188,
+  "pages": 10,
+  "paragraphs_and_cells_checked": 201,
   "missing_text": [],
-  "placeholders": [
-    "[[HUMAN: Charan to describe only what he actually did]]",
-    "[[HUMAN: add results]]"
-  ],
+  "placeholders": [],
   "first_page_hyperlinks": [
     "https://veribrand.onrender.com",
     "https://github.com/DheerajMG-Bng/veribrand"
   ],
   "renderer": "Word-compatible COM export (PDF Creator: WPS Docs); pypdfium2 rasterization",
-  "visual_review": "PASS: inspected all nine final page images; no clipping, overlap, missing glyphs or broken tables observed.",
-  "visual_fixes": "Removed inherited title border and an overlapping diagram annotation before final re-render. Word cleanup handles an already-exited automation server.",
-  "format_note": "Packaged renderer attempted; LibreOffice was absent. A Word-compatible COM interface exported the same DOCX; the PDF identifies its Creator as WPS Docs. All nine pages were rendered with pypdfium2 and visually inspected.",
+  "visual_review": "PASS: inspected all 10 rebuilt page images individually; no clipping, overlapping elements, missing glyphs or broken tables observed.",
+  "format_note": "Packaged renderer unavailable because LibreOffice is absent. Word-compatible COM export (PDF Creator: WPS Docs) was rendered with pypdfium2. The final PDF now matches the visually reviewed staging file byte for byte.",
   "sha256": {
-    "VeriBrand_Round2_Update.pdf": "416c5af6e59e117d738d8981891b32765d853678231ee8f25c0260b9a0bfdc4b",
-    "VeriBrand_Round2_Update.docx": "88a606cb176f3153ce2a9a131ccd198d932189d5bcfb167a3d489610f8dd938e"
+    "VeriBrand_Round2_Update.pdf": "eac540fa2f34a5376ca1fbdd5e350ecf43eb74c693a29f14a66f21fdb90796d2",
+    "VeriBrand_Round2_Update.docx": "6b9369f1cb6f96fba5d56eaadca176f7663078ae7d3da24c0fb2313ead08e6ea"
   }
 }

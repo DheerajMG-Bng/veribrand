@@ -1,8 +1,12 @@
 # Export the editable report through a Word-compatible COM interface without changing its content.
 # No confidential documents are opened, and macro automation is disabled.
+$ErrorActionPreference = 'Stop'
 $veribrandRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $veribrandDocx = Join-Path $veribrandRoot 'docs/submission/VeriBrand_Round2_Update.docx'
 $veribrandPdf = Join-Path $veribrandRoot 'docs/submission/VeriBrand_Round2_Update.pdf'
+$veribrandStageDirectory = Join-Path $veribrandRoot '.verification/submission-qa'
+New-Item -ItemType Directory -Force -Path $veribrandStageDirectory | Out-Null
+$veribrandPdfStage = Join-Path $veribrandStageDirectory ('export-' + [guid]::NewGuid().ToString() + '.pdf')
 $veribrandWord = $null
 $veribrandDocument = $null
 try {
@@ -16,9 +20,14 @@ try {
     Write-Output 'Exporting submission report through Word-compatible COM.'
     $veribrandDocument = $veribrandWord.Documents.Open($veribrandDocx, $false, $true)
     $veribrandDocument.Repaginate()
-    $veribrandDocument.ExportAsFixedFormat($veribrandPdf, 17)
+    # Some Word-compatible exporters fail when overwriting an existing PDF.
+    # Export to a new path and replace the final file only after successful output.
+    $veribrandDocument.ExportAsFixedFormat($veribrandPdfStage, 17)
+    if (-not (Test-Path -LiteralPath $veribrandPdfStage)) { throw 'PDF export produced no output.' }
     Write-Output ('PDF exported: ' + $veribrandDocument.ComputeStatistics(2) + ' pages')
 }
+Copy-Item -LiteralPath $veribrandPdfStage -Destination $veribrandPdf -Force -ErrorAction Stop
+Write-Output 'Final PDF replaced successfully.'
 finally {
     # Word may close its automation server after the final document closes.
     # Cleanup must not mask either a successful export or an original exception.

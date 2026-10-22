@@ -1,6 +1,6 @@
 # Round 2 submission verification
 
-Date: 22 October 2026. Target: https://veribrand.onrender.com. Public verification used fictional test drafts and did not reset shared data. Source baseline: main application code preceding this submission-only documentation commit.
+Date: 22 October 2026. Target: https://veribrand.onrender.com. Public verification used fictional test drafts and did not reset shared data. Application source version: main application code preceding this submission-only documentation commit.
 
 ## Public features actually exercised
 
@@ -38,8 +38,10 @@ Historical original live samples included one false positive on the clean draft.
 
 ## What is broken confusing or partial
 
-No blocking core-workflow failure was observed. Initial status briefly says Rules available before AI status loads; rules-only progress copy still mentions AI. Roles have no authentication, data and counters are ephemeral on Render Free, third-model availability is unverified, confidence is uncalibrated, multi-format ingestion and the three Round 3 improvements are not delivered. KB changes do not automatically re-review old versions or snapshot historical citation text. Human testing results remain empty. [KNOWN_ISSUES.md](../KNOWN_ISSUES.md) explains the scope and limitations.
+No blocking core-workflow failure was observed. Initial status briefly says Rules available before AI status loads; rules-only progress copy still mentions AI. Roles have no authentication, data and counters are ephemeral on Render Free, third-model availability is unverified, confidence is uncalibrated, multi-format ingestion and the three Round 3 improvements are not delivered. KB changes do not automatically re-review old versions or snapshot historical citation text. Usability evidence is limited to three informal volunteer sessions; no formal study or independent accuracy evaluation has been done. [KNOWN_ISSUES.md](../KNOWN_ISSUES.md) explains the scope and limitations.
 
 ## Reproduction
 
 From the repository root: `.venv/Scripts/python.exe -m backend.scripts.verify_submission`. This intentionally creates test drafts and consumes one real provider review; the final limiter test can temporarily consume that caller's minute allowance. It does not perform a global demo reset. Avoid rerunning unnecessarily against shared judging data.
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](evidence/qwen-live-check.json).

@@ -5,7 +5,7 @@
 - **Cold starts.** Render Free can spin down after inactivity; the first request may wait for startup. No uptime, latency or load guarantee has been measured.
 - **Free provider quotas and model availability.** Local token accounting uses response usage, not a preflight tokenizer. An in-flight call can cross a local threshold; other applications sharing the same key are invisible to these counters. Minute accounting and the IP limiter are per process. The configured third model has not been verified live.
 - **AI is fallible.** The first live sample run falsely flagged the clean product variant. A general terminology-policy validation fix removed that finding on saved-response replay; both results are retained. Existing code/quote validation cannot prove every generated explanation is semantically supported by a citation. Displayed AI confidence is model output, not calibrated probability.
-- **Small evaluation set.** 17/17 expected sample-code occurrences and zero clean-sample findings are results on the supplied examples, not population accuracy. No human usability test or outside user feedback has been claimed.
+- **Small evaluation set.** 17/17 expected sample-code occurrences and zero clean-sample findings are results on the supplied examples, not population accuracy. Usability evidence is limited to three informal volunteer sessions; no formal study or independent accuracy evaluation has been done.
 - **Local replacement scope.** Proposed phrases are checked for content rules using the social channel. Channel-wide disclosure is checked on the new full draft at mandatory re-review. Humans can write unsafe edits; the subsequent review is required before submission.
 - **Explicit overrides can remain.** A reasoned rejection leaves wording unchanged; Manager approval is possible after decisions. Retained medical risk additionally requires Reviewer sign-off. Other high-risk overrides do not require the Reviewer under this MVP's supplied workflow.
 - **KB edits do not automatically revisit already reviewed content.** Hashing invalidates future cache lookup, but existing version findings retain their original citations. Historical citation text is not snapshotted; removed items are shown as historical/unavailable. Re-review a new version after policy changes.
@@ -17,8 +17,10 @@
 
 ## Submission re-verification findings
 
-No blocking failure was observed in the tested public core workflow. The live UI briefly displayed Rules available before status data arrived, then AI available. Its rules-only progress sentence still mentioned AI grounding. These are confusing loading/copy states, not a failure of the verified AI-origin labels. No human testing notes were supplied; results in the session sheet remain empty.
+No blocking failure was observed in the tested public core workflow. The live UI briefly displayed Rules available before status data arrived, then AI available. Its rules-only progress sentence still mentioned AI grounding. These are confusing loading/copy states, not a failure of the verified AI-origin labels. Usability evidence is limited to three informal volunteer sessions; no formal study or independent accuracy evaluation has been done.
 
 The usage investigation measured primary-model tokens_today increasing from 0 to 917 after one unique uncached public review. The browser correctly showed AI-suggested and Unverified, needs a human. No accounting/label fix or application redeployment was needed. Earlier zero alone did not prove a bug: cached samples do not add provider usage and ephemeral SQLite can reset counters. The exact cause of the earlier zero was not independently established.
 
 Evidence: [live AI before/after](submission/evidence/live-ai.json), [live feature checks](submission/evidence/live-feature-verification.json), [browser checks](submission/evidence/browser-verification.md).
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](submission/evidence/qwen-live-check.json).

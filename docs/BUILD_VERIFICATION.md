@@ -1,6 +1,6 @@
 # Build verification — local and public deployment
 
-Verified by the build agent on 22 October 2026. Human user-testing results remain empty; Dheeraj's contribution is now team-confirmed and Charan's description remains a placeholder. The public deployment and its Groq connection have passed the checks below; Phase 7 technical documentation has been written to match this evidence.
+Verified by the build agent on 22 October 2026. Human usability evidence now consists of three informal volunteer sessions observed by the team; Dheeraj's and Charan's contributions are recorded from the team's supplied facts. The public deployment and its Groq connection have passed the checks below; Phase 7 technical documentation has been written to match this evidence.
 
 | Check | Result | Evidence |
 | --- | --- | --- |
@@ -28,10 +28,12 @@ Verified by the build agent on 22 October 2026. Human user-testing results remai
 
 The supplied knowledge list contains **19 items**, despite the brief saying 22. All 19 explicitly listed items are seeded; no missing knowledge was invented. Additional supporting citation codes are intentionally returned for medical and environmental findings and are not counted as false positives.
 
-The original 11-sample AI run was performed once. Cache export reused those stored results and did not call the provider again. After deployment, a separate unique clean draft made one uncached provider review to verify server configuration. Fallback exhaustion, invalid JSON, timeouts, 429 responses, short Retry-After, parameter retry, unsafe replacements, fabricated citations, repeated quotes, delimiter injection, and reviewer-risk propagation were tested offline with mocks. The third configured model was not exercised live.
+The original 11-sample AI run was performed once. Cache export reused those stored results and did not call the provider again. After deployment, a separate unique clean draft made one uncached provider review to verify server configuration. Fallback exhaustion, invalid JSON, timeouts, 429 responses, short Retry-After, parameter retry, unsafe replacements, fabricated citations, repeated quotes, delimiter injection, and reviewer-risk propagation were tested offline with mocks. The third configured model has no successful live verification. A later single minimal JSON-mode attempt on 22 October 2026 returned HTTP 403, model_permission_blocked_org, because the organization blocks it.
 
 This evidence establishes the tested sample workflows, not general-purpose factual accuracy or production readiness. Phrase replacements are rechecked for local content violations; influencer disclosure is checked on the entire new draft during mandatory re-review. The submitted draft may retain rejected findings with explicit override reasons; retained medical risks must receive Reviewer sign-off. That is an intentional human-governance workflow.
 
 Deployment instructions and limitations: [DEPLOYMENT.md](DEPLOYMENT.md).
 
 Latest Round 2 submission re-verification and uncached token accounting: [submission/VERIFICATION.md](submission/VERIFICATION.md).
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](submission/evidence/qwen-live-check.json).

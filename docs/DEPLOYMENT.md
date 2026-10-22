@@ -40,3 +40,5 @@ Render's free services spin down after 15 minutes of inactivity; a cold start ca
 This is a shared demo with header-selected roles and no authentication. Use fictional, non-confidential content only. The demo's approve/return actions do not publish content externally.
 
 Sources checked on 22 October 2026: [Render FastAPI guide](https://render.com/docs/deploy-fastapi), [Blueprint reference](https://render.com/docs/blueprint-spec), [free-tier behavior](https://render.com/docs/free).
+
+Qwen third-model check: One minimal JSON-mode call on 22 October 2026 returned HTTP 403 with model_permission_blocked_org: the model is blocked at the organization level; successful live verification remains incomplete. See [evidence](submission/evidence/qwen-live-check.json).
