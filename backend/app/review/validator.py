@@ -21,6 +21,7 @@ def validate(text, channel, knowledge, rule_findings, ai_result=None):
             if str(finding.get('id')) == str(proposed.get('rule_finding_id')) and finding['replacement'] is None:
                 if isinstance(proposed.get('replacement'), str):
                     finding['replacement'] = proposed['replacement']
+                    finding['replacement_hint'] = 'AI-suggested wording; review before accepting.'
     occupied = set()
     raw = ai_result.get('findings', [])
     for finding in raw if isinstance(raw, list) else []:
@@ -59,6 +60,7 @@ def validate(text, channel, knowledge, rule_findings, ai_result=None):
     # Phrase replacements are checked for content violations. Channel-wide disclosure
     # remains a whole-draft check on mandatory re-review after applying changes.
     for finding in findings:
+        finding['also_cites'] = sorted({code for code in finding.get('also_cites', []) if code in codes and code != finding.get('source_code')})
         replacement = finding.get('replacement')
         if replacement is not None and run_rules(replacement, 'social', knowledge):
             finding['replacement'] = None

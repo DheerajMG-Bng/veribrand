@@ -1232,7 +1232,7 @@ function ContentPage() {
                         </div>
                         {f.replacement !== null ? (
                           <div className="replacement">
-                            <span>SUGGESTED WORDING</span>
+                            <span>{f.replacement_hint?.startsWith('AI-suggested') ? 'AI-SUGGESTED WORDING' : 'SUGGESTED WORDING'}</span>
                             <p>
                               {f.replacement === "" ? (
                                 <em>Remove this phrase</em>

@@ -110,3 +110,17 @@ def test_draft_delimiters_cannot_be_injected(db,kb,monkeypatch):
     llm.analyse(db,draft,'social',kb,run_rules(draft,'social',kb),httpx.MockTransport(handler))
     payload=bodies[0]['messages'][1]['content']
     assert payload.count('</draft>')==1 and '\\u003c/draft\\u003e' in payload
+
+def test_ai_wording_attributed_on_rule_finding(kb):
+    text='guaranteed'
+    rules=run_rules(text,'social',kb)
+    ai={'findings':[],'replacements':[{'rule_finding_id':rules[0]['id'],'replacement':'made for everyday hydration'}]}
+    result=validate(text,'social',kb,rules,ai)
+    assert result[0]['origin']=='rule'
+    assert result[0]['replacement_hint'].startswith('AI-suggested')
+
+def test_deleted_supporting_citation_not_emitted(kb):
+    kb=[k for k in kb if k.code!='G-09']
+    text='cure'
+    result=validate(text,'social',kb,run_rules(text,'social',kb))
+    assert result[0]['also_cites']==[]

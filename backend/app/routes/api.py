@@ -182,7 +182,7 @@ def decision(finding_id:int,data:s.DecisionInput,db=Depends(get_db),role=Depends
     finding.edited_text=data.edited_text if data.decision=='edited' else None
     finding.decision_reason=data.reason
     finding.decided_by_role,finding.decided_at=role,now()
-    audit(db,role,'finding_decided',item.id,{'finding_id':finding.id,'decision':data.decision,'edited_text':finding.edited_text,'reason':data.reason},ai=finding.origin=='ai')
+    audit(db,role,'finding_decided',item.id,{'finding_id':finding.id,'decision':data.decision,'edited_text':finding.edited_text,'reason':data.reason},ai=finding.origin=='ai' or (finding.replacement_hint or '').startswith('AI-suggested'))
     db.commit()
     return as_dict(finding)
 
@@ -197,7 +197,7 @@ def apply(content_id:int,db=Depends(get_db),role=Depends(get_role)):
         raise HTTPException(409,'Accept or edit at least one finding before applying decisions.')
     text=apply_text(version.text,findings)
     add_version(db,item,text,role,'applied_fixes')
-    audit(db,role,'decisions_applied',content_id,{'from_version':version.version_no},ai=any(f.origin=='ai' and f.decision in {'accepted','edited'} for f in findings))
+    audit(db,role,'decisions_applied',content_id,{'from_version':version.version_no},ai=any((f.origin=='ai' or (f.replacement_hint or '').startswith('AI-suggested')) and f.decision in {'accepted','edited'} for f in findings))
     db.commit()
     return detail(db,item)
 
