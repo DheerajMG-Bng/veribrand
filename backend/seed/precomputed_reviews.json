@@ -1,0 +1,965 @@
+{
+  "timestamp": "2026-10-22T07:28:59.731623+00:00",
+  "kb_hash": "18cf05e6dd03a3d206afdca9327f923cffe4eec730251fd86e33b6f315940014",
+  "reviews": [
+    {
+      "sample_id": 1,
+      "text": "AcmeHydrate — India's #1 purest water!! Guaranteed to cure fatigue in 7 days. Buy now!",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r2",
+            "issue_type": "patterns",
+            "severity": "medium",
+            "quote": "AcmeHydrate",
+            "start": 0,
+            "end": 11,
+            "source_code": "T-02",
+            "also_cites": [],
+            "reason": "T-02 — Product name: Product name must be Acme Hydrate.",
+            "replacement": "Acme Hydrate",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r3",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "#1",
+            "start": 22,
+            "end": 24,
+            "source_code": "C-04",
+            "also_cites": [],
+            "reason": "C-04 — Superlatives: Superlatives are not allowed without a dated third-party source; none is on file.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r4",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "purest",
+            "start": 25,
+            "end": 31,
+            "source_code": "C-04",
+            "also_cites": [],
+            "reason": "C-04 — Superlatives: Superlatives are not allowed without a dated third-party source; none is on file.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r0",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "!!",
+            "start": 37,
+            "end": 39,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": ".",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r5",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "Guaranteed",
+            "start": 40,
+            "end": 50,
+            "source_code": "C-07",
+            "also_cites": [],
+            "reason": "C-07 — Absolute guarantees: Absolute guarantees are not allowed without legal approval.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r6",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "cure",
+            "start": 54,
+            "end": 58,
+            "source_code": "C-11",
+            "also_cites": [
+              "G-09"
+            ],
+            "reason": "C-11 — Medical claims: Health or medical claims are prohibited and require authorised Reviewer sign-off.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": true,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r7",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "fatigue",
+            "start": 59,
+            "end": 66,
+            "source_code": "C-11",
+            "also_cites": [
+              "G-09"
+            ],
+            "reason": "C-11 — Medical claims: Health or medical claims are prohibited and require authorised Reviewer sign-off.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": true,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r8",
+            "issue_type": "regex",
+            "severity": "high",
+            "quote": "in 7 days",
+            "start": 67,
+            "end": 76,
+            "source_code": "C-18",
+            "also_cites": [],
+            "reason": "C-18 — Time-bound results: Time-bound result claims are not allowed: no evidence is on file.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r1",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "!",
+            "start": 85,
+            "end": 86,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": ".",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "tone",
+              "severity": "low",
+              "quote": "!!",
+              "source_code": "G-03",
+              "reason": "Exclamation marks violate calm tone guideline",
+              "replacement": ".",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "tone",
+              "severity": "low",
+              "quote": "!",
+              "source_code": "G-03",
+              "reason": "Exclamation mark violates calm tone guideline",
+              "replacement": ".",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "fact_conflict",
+              "severity": "medium",
+              "quote": "AcmeHydrate",
+              "source_code": "T-02",
+              "reason": "Product name must be 'Acme Hydrate'",
+              "replacement": "Acme Hydrate",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "#1",
+              "source_code": "C-04",
+              "reason": "Superlative claim without dated third‑party source",
+              "replacement": null,
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "purest",
+              "source_code": "C-04",
+              "reason": "Superlative claim without dated third‑party source",
+              "replacement": null,
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "Guaranteed",
+              "source_code": "C-07",
+              "reason": "Absolute guarantee without legal approval",
+              "replacement": null,
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "cure",
+              "source_code": "C-11",
+              "reason": "Health claim prohibited",
+              "replacement": null,
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "fatigue",
+              "source_code": "C-11",
+              "reason": "Health claim prohibited",
+              "replacement": null,
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "in 7 days",
+              "source_code": "C-18",
+              "reason": "Time‑bound result claim without evidence",
+              "replacement": null,
+              "confidence": 0.9
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "."
+            },
+            {
+              "rule_finding_id": "r1",
+              "replacement": "."
+            },
+            {
+              "rule_finding_id": "r2",
+              "replacement": "Acme Hydrate"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 2,
+      "text": "Meet Acme Hydrate Classic: lab-tested water in 500 ml, 1 L and 5 L packs. Stay refreshed all day.",
+      "channel": "social",
+      "result": {
+        "findings": [],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "fact_conflict",
+              "severity": "low",
+              "quote": "Acme Hydrate Classic",
+              "source_code": null,
+              "reason": "Product name includes 'Classic' which conflicts with term T-02 requiring the name to be exactly 'Acme Hydrate'",
+              "replacement": "Acme Hydrate",
+              "confidence": 0.95
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Acme Hydrate"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 3,
+      "text": "Get 10% off this month on every Acme Hydrate bottle!",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "expired_offer",
+            "severity": "high",
+            "quote": "Get 10% off this month on every Acme Hydrate bottle!",
+            "start": 0,
+            "end": 52,
+            "source_code": "F-09",
+            "also_cites": [],
+            "reason": "F-09 — Expired launch offer: Launch offer of 10% off. This offer has expired.",
+            "replacement": null,
+            "replacement_hint": "Overlapping findings: edit the complete highlighted phrase.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "fact_conflict",
+              "severity": "medium",
+              "quote": "Get 10% off this month on every Acme Hydrate bottle!",
+              "source_code": "F-09",
+              "reason": "The draft advertises a 10% discount, but fact F-09 states that the launch offer of 10% off has expired.",
+              "replacement": "Get a special discount on Acme Hydrate bottles!",
+              "confidence": 0.95
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Get a special discount on Acme Hydrate bottles!"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 4,
+      "text": "Our 1 L bottle is just Rs 25 at all stores.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "price_mismatch",
+            "severity": "high",
+            "quote": "Rs 25",
+            "start": 23,
+            "end": 28,
+            "source_code": "F-20",
+            "also_cites": [],
+            "reason": "F-20 — Classic bottle price: The 1 L bottle price is Rs 20.",
+            "replacement": "Rs 20",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "fact_conflict",
+              "severity": "high",
+              "quote": "Rs 25",
+              "source_code": "F-20",
+              "reason": "The draft states the 1 L bottle costs Rs 25, but the verified fact F-20 records the price as Rs 20.",
+              "replacement": "Rs 20",
+              "confidence": 0.95
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Rs 20"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 5,
+      "text": "Loving my morning routine with Acme Hydrate. Link in bio. #hydration #wellness #fitness #morning",
+      "channel": "influencer",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "disclosure",
+            "severity": "high",
+            "quote": "Loving",
+            "start": 0,
+            "end": 6,
+            "source_code": "G-05",
+            "also_cites": [],
+            "reason": "G-05 — Disclosure: Sponsored or influencer posts must start with #ad or Paid partnership.",
+            "replacement": "#ad Loving",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r1",
+            "issue_type": "max_hashtags",
+            "severity": "low",
+            "quote": "#hydration #wellness #fitness #morning",
+            "start": 58,
+            "end": 96,
+            "source_code": "G-11",
+            "also_cites": [],
+            "reason": "G-11 — Hashtags: Use a maximum of 3 hashtags.",
+            "replacement": null,
+            "replacement_hint": "Overlapping findings: edit the complete highlighted phrase.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "tone",
+              "severity": "medium",
+              "quote": "Loving",
+              "source_code": "G-05",
+              "reason": "Sponsored influencer posts must start with #ad or Paid partnership",
+              "replacement": "#ad Loving",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "tone",
+              "severity": "low",
+              "quote": "#hydration #wellness #fitness #morning",
+              "source_code": "G-11",
+              "reason": "Hashtag limit is maximum 3, draft contains 4 hashtags",
+              "replacement": "#hydration #wellness #fitness",
+              "confidence": 0.9
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "#ad Loving"
+            },
+            {
+              "rule_finding_id": "r1",
+              "replacement": "#hydration #wellness #fitness"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 6,
+      "text": "Acme Hydrate is 100% safe and chemical-free, so you can detox with every sip.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "100% safe",
+            "start": 16,
+            "end": 25,
+            "source_code": "T-03",
+            "also_cites": [],
+            "reason": "T-03 — Banned phrases: Do not use 100% safe or chemical-free.",
+            "replacement": "crafted with quality standards",
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r1",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "chemical-free",
+            "start": 30,
+            "end": 43,
+            "source_code": "T-03",
+            "also_cites": [],
+            "reason": "T-03 — Banned phrases: Do not use 100% safe or chemical-free.",
+            "replacement": "formulated without harmful additives",
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "issue_type": "unsupported_claim",
+            "severity": "high",
+            "quote": "detox",
+            "start": 56,
+            "end": 61,
+            "source_code": "T-04",
+            "also_cites": [],
+            "reason": "Word is banned per term T-04",
+            "replacement": "supports your daily hydration needs",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "ai",
+            "confidence": 0.9,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-120b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "100% safe",
+              "source_code": "T-03",
+              "reason": "Phrase is banned per term T-03",
+              "replacement": "crafted with quality standards",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "chemical-free",
+              "source_code": "T-03",
+              "reason": "Phrase is banned per term T-03",
+              "replacement": "formulated without harmful additives",
+              "confidence": 0.9
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "detox",
+              "source_code": "T-04",
+              "reason": "Word is banned per term T-04",
+              "replacement": "supports your daily hydration needs",
+              "confidence": 0.9
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "crafted with quality standards"
+            },
+            {
+              "rule_finding_id": "r1",
+              "replacement": "formulated without harmful additives"
+            },
+            {
+              "rule_finding_id": "r2",
+              "replacement": "supports your daily hydration needs"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 7,
+      "text": "Our eco-friendly bottles are saving the planet.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "issue_type": "unsupported_claim",
+            "severity": "high",
+            "quote": "Our eco-friendly bottles are saving the planet.",
+            "start": 0,
+            "end": 47,
+            "source_code": "C-15",
+            "also_cites": [
+              "F-14"
+            ],
+            "reason": "The statement makes an environmental claim that is not specifically tied to the approved fact F-14 and lacks a dated third‑party source.",
+            "replacement": "Our bottles are made with 50% recycled plastic.",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "ai",
+            "confidence": 0.5,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-20b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "Our eco-friendly bottles are saving the planet.",
+              "source_code": "C-15",
+              "reason": "The statement makes an environmental claim that is not specifically tied to the approved fact F-14 and lacks a dated third‑party source.",
+              "replacement": "Our bottles are made with 50% recycled plastic."
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Our bottles are made with 50% recycled plastic."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 8,
+      "text": "WE ARE HERE!!! BEST WATER EVER!!!",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r2",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "WE",
+            "start": 0,
+            "end": 2,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": "We",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r3",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "ARE",
+            "start": 3,
+            "end": 6,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": "Are",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r4",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "HERE",
+            "start": 7,
+            "end": 11,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": "Here",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "issue_type": "tone",
+            "severity": "medium",
+            "quote": "!!!",
+            "start": 11,
+            "end": 14,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "Excessive exclamation marks create hype punctuation, violating the calm and confident tone guideline.",
+            "replacement": ".",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "ai",
+            "confidence": 0.5,
+            "verification": "verified"
+          },
+          {
+            "id": "r8",
+            "issue_type": "patterns",
+            "severity": "high",
+            "quote": "BEST",
+            "start": 15,
+            "end": 19,
+            "source_code": "C-04",
+            "also_cites": [
+              "G-03"
+            ],
+            "reason": "C-04 — Superlatives: Superlatives are not allowed without a dated third-party source; none is on file.",
+            "replacement": null,
+            "replacement_hint": "Rewrite this phrase using only approved facts.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r6",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "WATER",
+            "start": 20,
+            "end": 25,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": "Water",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r7",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "EVER",
+            "start": 26,
+            "end": 30,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": "Ever",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          },
+          {
+            "id": "r1",
+            "issue_type": "hype_punctuation",
+            "severity": "low",
+            "quote": "!!!",
+            "start": 30,
+            "end": 33,
+            "source_code": "G-03",
+            "also_cites": [],
+            "reason": "G-03 — Tone: Calm and confident; no hype punctuation.",
+            "replacement": ".",
+            "replacement_hint": null,
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-20b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "tone",
+              "severity": "medium",
+              "quote": "!!!",
+              "source_code": "G-03",
+              "reason": "Excessive exclamation marks create hype punctuation, violating the calm and confident tone guideline.",
+              "replacement": "."
+            },
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "high",
+              "quote": "BEST",
+              "source_code": null,
+              "reason": "The superlative ‘BEST’ is an unsupported claim without a dated third‑party source, violating the superlatives claim rule.",
+              "replacement": null
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "."
+            },
+            {
+              "rule_finding_id": "r8",
+              "replacement": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 9,
+      "text": "Acme-Hydrate now comes in a 5 L pack for the whole family.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "patterns",
+            "severity": "medium",
+            "quote": "Acme-Hydrate now comes in a 5 L pack for the whole family.",
+            "start": 0,
+            "end": 58,
+            "source_code": "T-02",
+            "also_cites": [],
+            "reason": "T-02 — Product name: Product name must be Acme Hydrate.",
+            "replacement": null,
+            "replacement_hint": "Overlapping findings: edit the complete highlighted phrase.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-20b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "low",
+              "quote": "Acme-Hydrate now comes in a 5 L pack for the whole family.",
+              "source_code": null,
+              "reason": "The statement claims a new product pack size without providing a source or evidence.",
+              "replacement": null,
+              "confidence": 0.9
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Acme Hydrate"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 10,
+      "text": "Acme Hydrate has been serving Mumbai since 2015.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "id": "r0",
+            "issue_type": "year_conflict",
+            "severity": "high",
+            "quote": "Acme Hydrate has been serving Mumbai since 2015.",
+            "start": 0,
+            "end": 48,
+            "source_code": "F-01",
+            "also_cites": [],
+            "reason": "F-01 — Founded in Pune: Founded in Pune in 2019.",
+            "replacement": null,
+            "replacement_hint": "Overlapping findings: edit the complete highlighted phrase.",
+            "requires_reviewer": false,
+            "origin": "rule",
+            "confidence": 1.0,
+            "verification": "verified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-20b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "fact_conflict",
+              "severity": "medium",
+              "quote": "Acme Hydrate has been serving Mumbai since 2015.",
+              "source_code": "F-01",
+              "reason": "The company was founded in Pune in 2019, so it could not have been serving Mumbai since 2015.",
+              "replacement": "Acme Hydrate has been serving Mumbai since 2019.",
+              "confidence": 0.9
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "since 2019"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sample_id": 11,
+      "text": "Acme Hydrate is loved by athletes across India.",
+      "channel": "social",
+      "result": {
+        "findings": [
+          {
+            "issue_type": "unsupported_claim",
+            "severity": "medium",
+            "quote": "Acme Hydrate is loved by athletes across India.",
+            "start": 0,
+            "end": 47,
+            "source_code": null,
+            "also_cites": [],
+            "reason": "The statement asserts a widespread preference without any supporting evidence or source.",
+            "replacement": null,
+            "replacement_hint": "Unverified, needs a human. Add evidence or remove the claim.",
+            "requires_reviewer": false,
+            "origin": "ai",
+            "confidence": 0.5,
+            "verification": "unverified"
+          }
+        ],
+        "ai_status": "ok",
+        "model_used": "openai/gpt-oss-20b",
+        "cached": true,
+        "note": "AI suggestions were checked against the knowledge base and rules.",
+        "ai_result": {
+          "findings": [
+            {
+              "issue_type": "unsupported_claim",
+              "severity": "medium",
+              "quote": "Acme Hydrate is loved by athletes across India.",
+              "source_code": null,
+              "reason": "The statement asserts a widespread preference without any supporting evidence or source.",
+              "replacement": "Acme Hydrate is a beverage that many athletes in India enjoy."
+            }
+          ],
+          "replacements": [
+            {
+              "rule_finding_id": "r0",
+              "replacement": "Acme Hydrate is a beverage that many athletes in India enjoy."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
