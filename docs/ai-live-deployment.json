@@ -1,0 +1,32 @@
+{
+  "ai_enabled": true,
+  "state": "ok",
+  "models": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "tokens_today": 0,
+      "tokens_this_minute": 0,
+      "state": "ok"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "tokens_today": 0,
+      "tokens_this_minute": 0,
+      "state": "ok"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "tokens_today": 0,
+      "tokens_this_minute": 0,
+      "state": "ok"
+    }
+  ],
+  "review": {
+    "ai_status": "ok",
+    "model_used": "openai/gpt-oss-120b",
+    "cached": false,
+    "note": "AI suggestions were checked against the knowledge base and rules."
+  },
+  "content_id": 6,
+  "finding_count": 0
+}

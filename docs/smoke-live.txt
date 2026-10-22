@@ -1,0 +1,6 @@
+PASS health
+PASS knowledge, samples, frontend and SPA deep links
+PASS create -> review -> decide -> apply -> re-review -> submit -> Manager -> Reviewer -> approved
+PASS return -> new version -> review -> resubmit -> approve; comments, audit, and diff
+AI review: status=ok, model=openai/gpt-oss-20b, cached=True
+PASS all smoke checks at https://veribrand.onrender.com; created content #4

@@ -1,6 +1,6 @@
 # Render deployment handoff
 
-Local build, HTTP smoke, and browser approval checks have passed. A public live URL has **not** been deployed or verified yet.
+Live service: **https://veribrand.onrender.com**. Public HTTP smoke and a separate uncached Groq review passed on 22 October 2026. See [BUILD_VERIFICATION.md](BUILD_VERIFICATION.md), [smoke-live.txt](smoke-live.txt) and [ai-live-deployment.json](ai-live-deployment.json). The steps below describe how to reproduce the deployment.
 
 ## Dashboard steps
 
@@ -19,7 +19,7 @@ Local build, HTTP smoke, and browser approval checks have passed. A public live 
 `PYTHON_VERSION=3.11.9` is included in the blueprint. The key is not committed. The third model is configured as requested but has not been tested live; it safely degrades to deterministic rules if unavailable.
 
 5. Select **Deploy Blueprint** and wait for the service to report **Live**. Copy its public HTTPS URL.
-6. Reply to the build chat with `deployed: https://YOUR-SERVICE.onrender.com` so the agent can run the live smoke test and finish the verified documentation.
+6. Run the verification command below against the public URL. The original deployment handoff and final technical documentation are complete; this check should be repeated after application changes.
 
 If Blueprint is unavailable, use **New → Web Service**, connect the same repository, and enter the settings and environment variables above manually. No Node build is needed on Render: the production React bundle is committed under `backend/app/static`.
 
