@@ -61,6 +61,12 @@ def validate_meta(data):
     for key in ('max','max_exclamations','approved_price','approved_year'):
         if key in meta and (not isinstance(meta[key],(int,float)) or meta[key]<0):
             raise HTTPException(422,f'{key} must be a nonnegative number.')
+    for key in ('max','max_exclamations','approved_year'):
+        if key in meta and (not isinstance(meta[key],int) or isinstance(meta[key],bool)):
+            raise HTTPException(422,f'{key} must be an integer.')
+    for key in ('replacement','replacement_prefix'):
+        if key in meta and not isinstance(meta[key],str):
+            raise HTTPException(422,f'{key} must be text.')
 
 @router.post('/knowledge')
 def add_knowledge(data:s.KnowledgeInput,db=Depends(get_db),role=Depends(get_role)):

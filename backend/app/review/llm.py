@@ -40,7 +40,8 @@ def analyse(db, text, channel, knowledge, rules, transport=None):
         return None, None, 'AI is not configured; showing rule-based results.'
     compact = '\n'.join(f'{k.code}|{k.kind}|{k.title}|{k.text}' for k in knowledge)
     rule_data = [{'id': f['id'], 'quote': f['quote'], 'code': f['source_code'], 'replacement': f['replacement']} for f in rules]
-    payload = f'Knowledge:\n{compact}\nChannel: {channel}\nRules: {json.dumps(rule_data, ensure_ascii=False)}\n<draft>{text}</draft>'
+    draft_data = json.dumps(text, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e')
+    payload = f'Knowledge:\n{compact}\nChannel: {channel}\nRules: {json.dumps(rule_data, ensure_ascii=False)}\n<draft>{draft_data}</draft>'
     # Keep the whole request below a conservative character budget; rules always
     # run on the full 5,000-character draft even if AI is skipped.
     if len(SYSTEM) + len(payload) > 11000:
@@ -76,7 +77,7 @@ def analyse(db, text, channel, knowledge, rules, transport=None):
                     budget.record(db, model, data.get('usage', {}).get('total_tokens', 0))
                     parsed = parse_json(data['choices'][0]['message']['content'])
                     return parsed, model, 'AI suggestions were checked against the knowledge base and rules.'
-            except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError):
+            except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError, AttributeError):
                 # Never expose provider response bodies or credentials to clients.
                 continue
             finally:

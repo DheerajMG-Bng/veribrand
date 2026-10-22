@@ -41,7 +41,7 @@ def validate(text, channel, knowledge, rule_findings, ai_result=None):
                                   and f['start'] < match.end() and match.start() < f['end'] for f in rule_findings):
             continue
         severity = finding.get('severity', 'low')
-        severity = severity if severity in SEVERITY else 'low'
+        severity = severity if isinstance(severity, str) and severity in SEVERITY else 'low'
         issue = str(finding.get('issue_type', 'unsupported_claim'))[:80]
         if source is None:
             severity = 'medium' if ('fact' in issue or 'claim' in issue) and severity != 'low' else 'low'
