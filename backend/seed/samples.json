@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "title": "Sample 1",
+    "channel": "social",
+    "text": "AcmeHydrate — India's #1 purest water!! Guaranteed to cure fatigue in 7 days. Buy now!",
+    "expected_codes": [
+      "T-02",
+      "C-04",
+      "C-07",
+      "C-11",
+      "C-18",
+      "G-03"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 2,
+    "title": "Sample 2",
+    "channel": "social",
+    "text": "Meet Acme Hydrate Classic: lab-tested water in 500 ml, 1 L and 5 L packs. Stay refreshed all day.",
+    "expected_codes": [],
+    "expect_unverified": false
+  },
+  {
+    "id": 3,
+    "title": "Sample 3",
+    "channel": "social",
+    "text": "Get 10% off this month on every Acme Hydrate bottle!",
+    "expected_codes": [
+      "F-09"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 4,
+    "title": "Sample 4",
+    "channel": "social",
+    "text": "Our 1 L bottle is just Rs 25 at all stores.",
+    "expected_codes": [
+      "F-20"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 5,
+    "title": "Sample 5",
+    "channel": "influencer",
+    "text": "Loving my morning routine with Acme Hydrate. Link in bio. #hydration #wellness #fitness #morning",
+    "expected_codes": [
+      "G-05",
+      "G-11"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 6,
+    "title": "Sample 6",
+    "channel": "social",
+    "text": "Acme Hydrate is 100% safe and chemical-free, so you can detox with every sip.",
+    "expected_codes": [
+      "T-03",
+      "T-04"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 7,
+    "title": "Sample 7",
+    "channel": "social",
+    "text": "Our eco-friendly bottles are saving the planet.",
+    "expected_codes": [
+      "C-15"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 8,
+    "title": "Sample 8",
+    "channel": "social",
+    "text": "WE ARE HERE!!! BEST WATER EVER!!!",
+    "expected_codes": [
+      "G-03",
+      "C-04"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 9,
+    "title": "Sample 9",
+    "channel": "social",
+    "text": "Acme-Hydrate now comes in a 5 L pack for the whole family.",
+    "expected_codes": [
+      "T-02"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 10,
+    "title": "Sample 10",
+    "channel": "social",
+    "text": "Acme Hydrate has been serving Mumbai since 2015.",
+    "expected_codes": [
+      "F-01"
+    ],
+    "expect_unverified": false
+  },
+  {
+    "id": 11,
+    "title": "Sample 11",
+    "channel": "social",
+    "text": "Acme Hydrate is loved by athletes across India.",
+    "expected_codes": [],
+    "expect_unverified": true
+  }
+]

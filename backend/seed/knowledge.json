@@ -1,0 +1,281 @@
+[
+  {
+    "kind": "guideline",
+    "code": "G-01",
+    "title": "Voice",
+    "text": "Friendly, clear, practical, no jargon.",
+    "meta": {},
+    "valid_until": null
+  },
+  {
+    "kind": "guideline",
+    "code": "G-03",
+    "title": "Tone",
+    "text": "Calm and confident; no hype punctuation.",
+    "meta": {
+      "check": "hype_punctuation",
+      "max_exclamations": 1,
+      "flag_all_caps_words": true,
+      "severity": "low"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "guideline",
+    "code": "G-05",
+    "title": "Disclosure",
+    "text": "Sponsored or influencer posts must start with #ad or Paid partnership.",
+    "meta": {
+      "check": "disclosure",
+      "channels": [
+        "influencer"
+      ],
+      "markers": [
+        "#ad",
+        "Paid partnership"
+      ],
+      "severity": "high",
+      "replacement_prefix": "#ad "
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "guideline",
+    "code": "G-09",
+    "title": "No health claims",
+    "text": "Health and medical claims are prohibited. See C-11.",
+    "meta": {},
+    "valid_until": null
+  },
+  {
+    "kind": "guideline",
+    "code": "G-11",
+    "title": "Hashtags",
+    "text": "Use a maximum of 3 hashtags.",
+    "meta": {
+      "check": "max_hashtags",
+      "max": 3,
+      "severity": "low"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "term",
+    "code": "T-02",
+    "title": "Product name",
+    "text": "Product name must be Acme Hydrate.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "AcmeHydrate",
+        "Acme-Hydrate"
+      ],
+      "case_sensitive": true,
+      "replacement": "Acme Hydrate",
+      "severity": "medium"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "term",
+    "code": "T-03",
+    "title": "Banned phrases",
+    "text": "Do not use 100% safe or chemical-free.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "100% safe",
+        "chemical-free"
+      ],
+      "severity": "high"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "term",
+    "code": "T-04",
+    "title": "Banned word",
+    "text": "Do not use detox.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "detox"
+      ],
+      "severity": "medium"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "fact",
+    "code": "F-01",
+    "title": "Founded in Pune",
+    "text": "Founded in Pune in 2019.",
+    "meta": {
+      "check": "year_conflict",
+      "approved_year": 2019,
+      "trigger": [
+        "since",
+        "founded in",
+        "established in",
+        "started in"
+      ],
+      "severity": "high"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "fact",
+    "code": "F-09",
+    "title": "Expired launch offer",
+    "text": "Launch offer of 10% off. This offer has expired.",
+    "meta": {
+      "check": "expired_offer",
+      "patterns": [
+        "10% off",
+        "launch offer"
+      ],
+      "severity": "high"
+    },
+    "valid_until": "2026-06-30"
+  },
+  {
+    "kind": "fact",
+    "code": "F-12",
+    "title": "Lab testing",
+    "text": "Every batch is lab-tested for purity by an accredited third-party lab.",
+    "meta": {},
+    "valid_until": null
+  },
+  {
+    "kind": "fact",
+    "code": "F-14",
+    "title": "Recycled plastic",
+    "text": "The 1 L Classic bottle uses 50% recycled plastic.",
+    "meta": {},
+    "valid_until": null
+  },
+  {
+    "kind": "fact",
+    "code": "F-20",
+    "title": "Classic bottle price",
+    "text": "The 1 L bottle price is Rs 20.",
+    "meta": {
+      "check": "price_mismatch",
+      "approved_price": 20,
+      "symbols": [
+        "Rs",
+        "INR",
+        "₹"
+      ],
+      "product_patterns": [
+        "1 L",
+        "1L",
+        "1 litre"
+      ],
+      "severity": "high"
+    },
+    "valid_until": "2026-12-31"
+  },
+  {
+    "kind": "fact",
+    "code": "F-21",
+    "title": "Pack sizes",
+    "text": "Pack sizes: 500 ml, 1 L, 5 L.",
+    "meta": {},
+    "valid_until": null
+  },
+  {
+    "kind": "claim_rule",
+    "code": "C-04",
+    "title": "Superlatives",
+    "text": "Superlatives are not allowed without a dated third-party source; none is on file.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "#1",
+        "number one",
+        "no. 1",
+        "best",
+        "purest",
+        "finest"
+      ],
+      "severity": "high"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "claim_rule",
+    "code": "C-07",
+    "title": "Absolute guarantees",
+    "text": "Absolute guarantees are not allowed without legal approval.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "guaranteed",
+        "guarantee"
+      ],
+      "severity": "high"
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "claim_rule",
+    "code": "C-11",
+    "title": "Medical claims",
+    "text": "Health or medical claims are prohibited and require authorised Reviewer sign-off.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "cure",
+        "cures",
+        "treat",
+        "treats",
+        "heal",
+        "prevent",
+        "relieve",
+        "fatigue",
+        "immunity",
+        "disease"
+      ],
+      "severity": "high",
+      "requires_reviewer": true,
+      "also_cites": [
+        "G-09"
+      ]
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "claim_rule",
+    "code": "C-15",
+    "title": "Environmental claims",
+    "text": "Environmental claims must be tied specifically to the approved fact F-14.",
+    "meta": {
+      "check": "patterns",
+      "patterns": [
+        "eco-friendly",
+        "sustainable",
+        "saving the planet"
+      ],
+      "severity": "medium",
+      "also_cites": [
+        "F-14"
+      ]
+    },
+    "valid_until": null
+  },
+  {
+    "kind": "claim_rule",
+    "code": "C-18",
+    "title": "Time-bound results",
+    "text": "Time-bound result claims are not allowed: no evidence is on file.",
+    "meta": {
+      "check": "regex",
+      "patterns": [
+        "\\bin \\d+ (days?|weeks?|hours?)\\b"
+      ],
+      "severity": "high"
+    },
+    "valid_until": null
+  }
+]
