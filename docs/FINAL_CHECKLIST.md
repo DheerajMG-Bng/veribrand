@@ -11,6 +11,8 @@
 | Public live URL passes smoke | PASS | [smoke-live.txt](smoke-live.txt), https://veribrand.onrender.com, full workflow including return/resubmit |
 | Live AI provider connection | PASS | [ai-live-deployment.json](ai-live-deployment.json): separate uncached primary-model review succeeded; optional smoke review was cached |
 | Repo public; commit times after 10 AM IST on 22 Oct | PASS | GitHub metadata reports public; actual initial commit is 12:51:43 IST and subsequent build commits are later; timestamps were not altered |
-| Documentation matches verified scope | PASS | [Build verification](BUILD_VERIFICATION.md), [known issues](KNOWN_ISSUES.md), [AI disclosure](AI_DISCLOSURE.md); human records remain empty templates |
+| Documentation matches verified scope | PASS | [Build verification](BUILD_VERIFICATION.md), [known issues](KNOWN_ISSUES.md), [AI disclosure](AI_DISCLOSURE.md); human testing results remain empty and Charan's contribution awaits input; Dheeraj's contribution is team-confirmed |
 
 PASS applies to the stated checks, not production readiness or general model accuracy. The supplied seed specifies 19 items rather than the brief's inconsistent count of 22. Real authentication, durable deployment storage, human user testing, a live third-model check and multi-format review are not claimed complete.
+
+Latest submission artifacts and verification: [submission/VERIFICATION.md](submission/VERIFICATION.md) and [FORM_ANSWERS.md](FORM_ANSWERS.md).

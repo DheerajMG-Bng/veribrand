@@ -1,0 +1,80 @@
+{
+  "content_id": 6,
+  "before": {
+    "enabled": true,
+    "models": [
+      {
+        "model": "openai/gpt-oss-120b",
+        "tokens_today": 0,
+        "tokens_this_minute": 0,
+        "state": "ok"
+      },
+      {
+        "model": "openai/gpt-oss-20b",
+        "tokens_today": 0,
+        "tokens_this_minute": 0,
+        "state": "ok"
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "tokens_today": 0,
+        "tokens_this_minute": 0,
+        "state": "ok"
+      }
+    ],
+    "state": "ok"
+  },
+  "after": {
+    "enabled": true,
+    "models": [
+      {
+        "model": "openai/gpt-oss-120b",
+        "tokens_today": 917,
+        "tokens_this_minute": 917,
+        "state": "ok"
+      },
+      {
+        "model": "openai/gpt-oss-20b",
+        "tokens_today": 0,
+        "tokens_this_minute": 0,
+        "state": "ok"
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "tokens_today": 0,
+        "tokens_this_minute": 0,
+        "state": "ok"
+      }
+    ],
+    "state": "ok"
+  },
+  "token_delta": 917,
+  "ai_status": "ok",
+  "model_used": "openai/gpt-oss-120b",
+  "cached": false,
+  "findings": [
+    {
+      "id": 1,
+      "version_id": 6,
+      "issue_type": "unsupported_claim",
+      "severity": "medium",
+      "quote": "Acme Hydrate is recommended by every professional athlete in India.",
+      "start": 37,
+      "end": 104,
+      "source_code": null,
+      "also_cites": [],
+      "reason": "The statement makes an absolute endorsement claim without any supporting source or evidence, which is not allowed under the guidelines.",
+      "replacement": null,
+      "replacement_hint": "Unverified, needs a human. Add evidence or remove the claim.",
+      "confidence": 0.9,
+      "verification": "unverified",
+      "origin": "ai",
+      "requires_reviewer": false,
+      "decision": "pending",
+      "edited_text": null,
+      "decision_reason": null,
+      "decided_by_role": null,
+      "decided_at": null
+    }
+  ]
+}

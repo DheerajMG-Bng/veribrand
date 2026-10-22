@@ -1,0 +1,13 @@
+knowledge and samples: PASS
+uncached AI and token accounting: PASS
+rules-only review and real citations: PASS
+reject requires reason: PASS
+accept edit and reject: PASS
+apply creates new version: PASS
+submit manager routing and Reviewer sign-off: PASS
+return comment manual version resubmit: PASS
+versions diff comments audit: PASS
+5000 character limit: PASS
+admin knowledge add edit delete: PASS
+friendly rate limit: PASS
+Saved evidence. No shared demo reset was performed.

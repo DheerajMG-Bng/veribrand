@@ -1,31 +1,51 @@
-# Round 3: three committed improvements
+# Round 3 committed improvements
 
-These are proposed technical designs, not completed or verified features.
+These are proposed designs and acceptance measures, not delivered features or measured user outcomes.
 
 ## 1. Guideline-Clarity Insights
 
-Add policy-revision IDs and immutable policy-text snapshots to findings, with real organisation/user identity and access control. Store override reasons as structured categories plus optional free text, preserving the original wording. Aggregate findings by policy revision, channel, severity, creator cohort and date range. Compute occurrence rate per reviewed draft, rejection/override rate, repeat findings after an edit, and median decision time.
+User problem: Managers cannot currently see which guidelines repeatedly cause confusion, revisions or overrides. A single draft view hides recurring policy problems.
 
-Create `/api/insights/guidelines` and a Manager/Admin dashboard with recurring issues, denominator counts, example decisions and versioned policy links. Flag a guideline for human clarification only when it has a minimum sample count and an unusually high override or repeated-edit rate. An optional summarizer can cluster override reasons and propose clarification questions with links to the exact supporting events; it must not rewrite approved policy automatically.
+Technical design: Snapshot policy revision/text on each finding. Store structured override categories alongside original reasons. Aggregate issue frequency, override rate, repeat edits and decision time by policy revision, channel and date, with denominators. Add a Manager/Admin insights endpoint and dashboard linking every alert to permission-checked source findings. Require minimum sample counts; suggested clarifications remain human proposals.
 
-Privacy controls redact creator text in cross-team aggregates and restrict example access. Test aggregation with fixed event fixtures, report small-sample uncertainty, and compare each insight against the underlying audit events. Acceptance: a reviewer can trace a recurring-issue alert to real findings and overrides, edit a policy revision, and compare the following review period without conflating old/new rules.
+Milestones:
 
-## 2. Multi-format review
+- M1: add policy revision snapshots, override categories and fixture-based aggregation tests.
+- M2: deliver counts, rates, date filters and drill-down to real evidence.
+- M3: add ambiguity signals and optional grounded summaries; test small-sample and access-control cases.
 
-Introduce `Asset` and `ExtractedSpan` records with MIME type, SHA-256, storage location, page/image coordinates, extraction method and source version. Accept explicit size/page limits and validate file signatures; scan uploads and isolate parsing workers. Keep raw uploads private and apply retention settings.
+How success will be measured: Proposed acceptance measures: all displayed aggregates exactly match event fixtures; every alert links to its supporting findings; no alerts below the declared sample threshold. In a future human study, compare task completion time for identifying a recurring guideline problem against the draft-by-draft baseline. No improvement percentage is claimed before measurement.
 
-For images, use OCR plus a vision adapter targeting the requested `qwen/qwen3.8-27b` only after verifying that the selected provider endpoint supports vision for that model; otherwise use a provider-supported vision model behind the same adapter. Check missing/insufficient supplied alt text, palette distance to approved brand colours, logo presence against approved references, and text contrast where foreground/background can be measured reliably. Distinguish measured checks from model judgement and “cannot determine.” Contrast on complex backgrounds should request a human rather than invent a ratio. Every issue should link a KB code and image bounding box or reference region.
+Cut first if time is short: Cut AI clustering/summaries first, then advanced cohort filters. Keep policy revisions, counts with denominators, override reasons and evidence drill-down.
 
-For DOCX, extract paragraphs/tables with `python-docx`; map findings back to paragraph IDs while preserving the original file. For PDFs, use `pypdf`/`pdfplumber` for selectable text with page coordinates, then OCR for scanned pages. Treat embedded prompts as untrusted document data. Never claim extraction is complete if pages are unreadable; show extraction coverage before review.
+## 2. Multi-format review of images and DOCX/PDF
 
-Feed extracted text through the existing deterministic engine and grounding validator, extended to page/asset offsets. Human fixes create an annotated or edited asset version; approval never silently overwrites the upload. Acceptance: labelled image, DOCX and PDF fixtures produce source-located findings; corrupt/scanned files fail clearly; a human can inspect original regions, fix, re-review and approve.
+User problem: Creators currently must paste text; they cannot submit an image, brochure or document and inspect a finding at its original page or image region.
+
+Technical design: Add private Asset and ExtractedSpan records with file hash, MIME type, extraction coverage, page/paragraph coordinates and version. Validate file signatures and size/page limits; isolate parsing. Extract DOCX paragraphs/tables with python-docx and PDF text with pypdf/pdfplumber; use OCR for scanned pages. For images, check supplied alt text, measurable contrast, palette and logo presence with OCR/vision assistance. Evaluate the requested qwen/qwen3.8-27b only after confirming provider vision support, otherwise select a supported vision model behind an adapter. Reuse rules, grounding, decisions and approval; show cannot determine when evidence or extraction is inadequate.
+
+Milestones:
+
+- M1: implement validated uploads and DOCX/selectable-PDF extraction with source locations and coverage warnings.
+- M2: add image/OCR ingestion, alt-text review and measured palette/contrast checks.
+- M3: add supported vision/logo checks and scanned-PDF OCR; integrate asset versions and source-region review.
+
+How success will be measured: Proposed acceptance measures: every retained finding maps to an original paragraph, page or image region; fixture tests detect corrupt/oversize files and unreadable pages without claiming complete extraction. Measure extraction coverage and per-check precision/recall on labelled format fixtures, then have a human complete review-to-approval on each supported format. Complex contrast must return cannot determine instead of an invented ratio.
+
+Cut first if time is short: Cut custom logo detection and broad visual aesthetics first, then scanned-PDF OCR if needed. Keep DOCX/selectable-PDF extraction, basic image/alt-text checks, coverage warnings and source-located findings; do not advertise an unsupported format as complete.
 
 ## 3. Reliability and evaluation harness
 
-Build a versioned labelled benchmark of clean drafts, rule violations, ambiguous claims, unsupported endorsements, repeated/overlapping spans, Unicode, prompt injections and provider failures. Human annotators record expected code, span, severity and uncertainty; disagreements require adjudication and remain visible. Split evaluation examples from prompt-development examples.
+User problem: The current 11-draft sample set is too small to establish general accuracy, and accepting a suggestion does not prove that it was correct. Users need clearer evidence of what a review system can reliably detect.
 
-Pin evaluation records to code commit, KB hash, prompt hash, provider/model and timestamp. Run deterministic tests in CI and opt-in paid/provider evaluations separately. Measure per-code and per-channel precision/recall, span overlap accuracy, unsupported-citation rate, unsafe replacement rate, workflow routing correctness, fallback success, latency and token cost. Store raw results with sensitive text controls and distinguish cached evaluations from new model calls.
+Technical design: Build a versioned human-labelled benchmark with separate development/evaluation splits, uncertain cases and adjudication. Record expected code, span, severity and safety labels. Pin results to code commit, KB/prompt hash, provider/model and timestamp; separate cache replays from new calls. Add finding-level correctness/source/severity/safety feedback distinct from accept/reject. Report per-code/channel precision and recall, span quality, fabricated-citation and unsafe-replacement rates, latency, token cost and fallback behavior. Display benchmark date, counts and uncertainty next to metrics; confidence remains uncalibrated until evaluated.
 
-Add feedback on each finding: correct/incorrect, wrong source, wrong severity, unsafe wording and optional explanation. Save feedback separately from creator accept/reject decisions; acceptance does not prove correctness. Use adjudicated labels for metrics, not raw overrides. Display benchmark version, counts, confidence intervals and evaluation date with precision/recall in the UI. Retain the present confidence display but label model confidence as uncalibrated until measured; compare confidence bins with labelled correctness before introducing calibrated thresholds.
+Milestones:
 
-Acceptance: CI catches regressions on the fixed benchmark, every displayed metric is reproducible from stored labels and results, and provider outage tests still complete the human approval workflow through rules-only mode.
+- M1: define labels, annotation guide, split and deterministic CI runner with failure injection.
+- M2: store reproducible model runs and finding-level feedback; adjudicate disagreements.
+- M3: publish benchmark-scoped metrics in the UI, add confidence-bin analysis and compare model/prompt revisions.
+
+How success will be measured: Proposed acceptance measures: 100% of displayed metrics reproduce from stored labels/results; all provider-failure fixtures complete via a documented fallback or rules-only result; no known fabricated citation or rule-violating replacement passes the safety fixtures. Set quality release thresholds only after a labelled baseline exists and show sample counts and uncertainty. Confidence calibration and independent human evaluation are future measurements, not current claims.
+
+Cut first if time is short: Cut live model-comparison dashboards, automated calibration and continuous paid evaluations first. Keep a fixed labelled benchmark, reproducible offline runner, failure fixtures, feedback records and honest metric scope.

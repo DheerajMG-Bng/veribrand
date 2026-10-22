@@ -1,0 +1,12 @@
+{"sample": 1, "expected": ["C-04", "C-07", "C-11", "C-18", "G-03", "T-02"], "found": ["C-04", "C-07", "C-11", "C-18", "G-03", "G-09", "T-02"], "findings": 9, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 2, "expected": [], "found": [], "findings": 0, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 3, "expected": ["F-09"], "found": ["F-09"], "findings": 1, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 4, "expected": ["F-20"], "found": ["F-20"], "findings": 1, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 5, "expected": ["G-05", "G-11"], "found": ["G-05", "G-11"], "findings": 2, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 6, "expected": ["T-03", "T-04"], "found": ["T-03", "T-04"], "findings": 3, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 7, "expected": ["C-15"], "found": ["C-15", "F-14"], "findings": 2, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 8, "expected": ["C-04", "G-03"], "found": ["C-04", "G-03"], "findings": 8, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 9, "expected": ["T-02"], "found": ["T-02"], "findings": 1, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 10, "expected": ["F-01"], "found": ["F-01"], "findings": 1, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"sample": 11, "expected": [], "found": [], "findings": 0, "unverified": 0, "ai_status": "rules_only", "model": null, "cached": true}
+{"mode": "rules_only", "code_recall": "17/17", "recall": 1.0, "sample_2_false_positives": 0}

@@ -1,6 +1,6 @@
 # Build verification — local and public deployment
 
-Verified by the build agent on 22 October 2026. Human user-testing and contribution records have not been filled in. The public deployment and its Groq connection have passed the checks below; Phase 7 technical documentation has been written to match this evidence.
+Verified by the build agent on 22 October 2026. Human user-testing results remain empty; Dheeraj's contribution is now team-confirmed and Charan's description remains a placeholder. The public deployment and its Groq connection have passed the checks below; Phase 7 technical documentation has been written to match this evidence.
 
 | Check | Result | Evidence |
 | --- | --- | --- |
@@ -33,3 +33,5 @@ The original 11-sample AI run was performed once. Cache export reused those stor
 This evidence establishes the tested sample workflows, not general-purpose factual accuracy or production readiness. Phrase replacements are rechecked for local content violations; influencer disclosure is checked on the entire new draft during mandatory re-review. The submitted draft may retain rejected findings with explicit override reasons; retained medical risks must receive Reviewer sign-off. That is an intentional human-governance workflow.
 
 Deployment instructions and limitations: [DEPLOYMENT.md](DEPLOYMENT.md).
+
+Latest Round 2 submission re-verification and uncached token accounting: [submission/VERIFICATION.md](submission/VERIFICATION.md).

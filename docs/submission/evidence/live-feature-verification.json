@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-10-22T09:58:50.766098+00:00",
+  "base_url": "https://veribrand.onrender.com",
+  "events": [
+    {
+      "feature": "knowledge and samples",
+      "result": "PASS",
+      "details": {
+        "knowledge_count": 19,
+        "sample_count": 11
+      }
+    },
+    {
+      "feature": "uncached AI and token accounting",
+      "result": "PASS",
+      "details": {
+        "content_id": 6,
+        "model": "openai/gpt-oss-120b",
+        "token_delta": 917,
+        "ai_findings": 1
+      }
+    },
+    {
+      "feature": "rules-only review and real citations",
+      "result": "PASS",
+      "details": {
+        "content_id": 7,
+        "codes": [
+          "C-07",
+          "C-11",
+          "T-02"
+        ]
+      }
+    },
+    {
+      "feature": "reject requires reason",
+      "result": "PASS",
+      "details": {
+        "detail": "Explain why you are overriding this finding."
+      }
+    },
+    {
+      "feature": "accept edit and reject",
+      "result": "PASS",
+      "details": {
+        "decisions": [
+          "accepted",
+          "edited",
+          "rejected"
+        ]
+      }
+    },
+    {
+      "feature": "apply creates new version",
+      "result": "PASS",
+      "details": {
+        "version": 2,
+        "text": "Acme Hydrate is  to cure fatigue."
+      }
+    },
+    {
+      "feature": "submit manager routing and Reviewer sign-off",
+      "result": "PASS",
+      "details": {
+        "content_id": 7,
+        "final_status": "approved",
+        "wrong_role_status": 403
+      }
+    },
+    {
+      "feature": "return comment manual version resubmit",
+      "result": "PASS",
+      "details": {
+        "content_id": 7,
+        "version": 3,
+        "status": "approved"
+      }
+    },
+    {
+      "feature": "versions diff comments audit",
+      "result": "PASS",
+      "details": {
+        "content_id": 7,
+        "versions": 3,
+        "comments": 2,
+        "audit_entries": 20,
+        "before": "AcmeHydrate is guaranteed to cure fatigue.",
+        "after": "Acme Hydrate comes in 500 ml, 1 L and 5 L packs."
+      }
+    },
+    {
+      "feature": "5000 character limit",
+      "result": "PASS",
+      "details": {
+        "5000": "accepted",
+        "5001": {
+          "detail": "Drafts must be 5,000 characters or fewer."
+        }
+      }
+    },
+    {
+      "feature": "admin knowledge add edit delete",
+      "result": "PASS",
+      "details": {
+        "temporary_code": "G-98",
+        "restored_count": 19
+      }
+    },
+    {
+      "feature": "friendly rate limit",
+      "result": "PASS",
+      "details": {
+        "status": 429,
+        "detail": "You have run 10 reviews this minute. Please wait a minute and try again.",
+        "retry_after": "60"
+      }
+    }
+  ],
+  "workflow_content_id": 7,
+  "ai_content_id": 6
+}

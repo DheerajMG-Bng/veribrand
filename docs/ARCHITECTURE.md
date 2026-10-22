@@ -1,5 +1,7 @@
 # Architecture
 
+Submission re-verification exercised the public API workflow, UI labels and uncached Groq token accounting on 22 October 2026. [Verification methods](submission/VERIFICATION.md) separate live observations from implementation inspection and mocked tests.
+
 ## Deployed shape
 
 ```mermaid

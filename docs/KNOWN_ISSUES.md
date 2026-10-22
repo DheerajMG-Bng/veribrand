@@ -14,3 +14,11 @@
 - **One dependency warning.** The test suite emits a Starlette/AnyIO BlockingPortal deprecation warning; all 44 tests pass.
 - **Python verification scope.** Fresh-clone testing used local Windows Python 3.11.0. The Render configuration requests 3.11.9; the live service passed HTTP checks, but its exact running patch version was not introspected.
 - **Demo reset is destructive within the shared demo.** Admin reset removes previous contents and audit history, reseeds three examples and records a reset event. It is not a backup/recovery facility.
+
+## Submission re-verification findings
+
+No blocking failure was observed in the tested public core workflow. The live UI briefly displayed Rules available before status data arrived, then AI available. Its rules-only progress sentence still mentioned AI grounding. These are confusing loading/copy states, not a failure of the verified AI-origin labels. No human testing notes were supplied; results in the session sheet remain empty.
+
+The usage investigation measured primary-model tokens_today increasing from 0 to 917 after one unique uncached public review. The browser correctly showed AI-suggested and Unverified, needs a human. No accounting/label fix or application redeployment was needed. Earlier zero alone did not prove a bug: cached samples do not add provider usage and ephemeral SQLite can reset counters. The exact cause of the earlier zero was not independently established.
+
+Evidence: [live AI before/after](submission/evidence/live-ai.json), [live feature checks](submission/evidence/live-feature-verification.json), [browser checks](submission/evidence/browser-verification.md).
